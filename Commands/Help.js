@@ -9,7 +9,7 @@ class Help extends Command {
     this.usage = `[command name]`;
   }
 
-  execute(Message) {
+  execute(Message, args) {
     const data = [];
     const { commands } = Message.client;
     
