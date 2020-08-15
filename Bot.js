@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require(`fs`);
 const EventEmitter = require('events');
 const Discord = require('discord.js');
