@@ -14,12 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
-      with:
-        envkey_AUTH_TOKEN: ${{ secrets.DISCORD_AUTH_TOKEN }}
-        file_name: .env
 
     - name: Cache node modules
       uses: actions/cache@v1
@@ -37,8 +31,11 @@ jobs:
     - name: Installing NPM
       run: npm install
 
-    # - name: Building application
-    #   run: npm run build
+    - name: Create env file
+      run: |
+        touch .env
+        echo AUTH_TOKEN=${{ secrets.DISCORD_AUTH_TOKEN }} >> .env
+        cat .env
 
     - name: Generate deployment package
       run: zip -r deploy.zip * -x "**node_modules**"
