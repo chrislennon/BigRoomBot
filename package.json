@@ -1,0 +1,23 @@
+{
+  "name": "bigroombot",
+  "version": "1.0.0",
+  "description": "Bot for the BigRoom.",
+  "readme": "README.md",
+  "maintainers": [],
+  "author": "Chris Lennon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrislennon/BigRoomBot"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.3.0"
+  },
+  "engines": {
+    "node": "^12.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
