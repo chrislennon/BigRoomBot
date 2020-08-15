@@ -75,9 +75,10 @@ class Bot extends EventEmitter {
 
     // If no command found, ignore
     if (!command) return;
-
+    
+    if (command.name == `help`) command.execute(Message, this, args);
     // Execute command
-    command.execute(Message, args);
+    else command.execute(Message, args);
   }
 }
 
