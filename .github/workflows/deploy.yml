@@ -38,6 +38,10 @@ jobs:
         echo FOO=bar >> .env
         cat .env
 
+    - name: Create version file
+      run: |
+        echo ${{ github.sha }} | cut -c1-7 >> .version
+
     - name: Generate deployment package
       run: zip -r deploy.zip . -x "**node_modules**"
 
