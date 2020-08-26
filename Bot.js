@@ -56,7 +56,7 @@ class Bot extends EventEmitter {
     this.client.user.setStatus('available')
 
     var deployVersion = fs.readFileSync('.version', 'utf8');
-    this.client.setPresence({
+    this.client.user.setPresence({
         game: {
             name: `Commit: ${deployVersion}`,
             type: "PLAYING",
