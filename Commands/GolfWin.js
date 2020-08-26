@@ -17,9 +17,12 @@ class GolfWin extends Command {
 
     var params = {
       TableName: process.env.DYNAMO_TABLE_NAME,
-      Key: { "id": { S: targetUser.id } },
-      ExpressionAttributeValues: { ":inc": {N: "1"} },
-      UpdateExpression: "ADD golfWin :inc",
+      Key: { "id": targetUser.id },
+      ExpressionAttributeValues: { ":inc": 1 },
+      ExpressionAttributeNames: {
+        "#field": "golfWins"
+      },
+      UpdateExpression: "ADD #field :inc",
       ReturnValues: "UPDATED_NEW"
     };
     
