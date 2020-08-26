@@ -55,9 +55,16 @@ class Bot extends EventEmitter {
     console.log(`Connected to Discord as ${this.client.user.username}#${this.client.user.discriminator} <@${this.client.user.id}>`);
     this.client.user.setStatus('available')
 
-    var deployVersion = fs.readFileSync('.version', 'utf8');
+    var deployVersion;
+    try {
+      deployVersion = fs.readFileSync('.version');
+    } catch (err) {
+      // if no version file, assume 'local'
+      deployVersion = 'local';
+    }
+
     this.client.user.setPresence({
-        game: {
+        activity: {
             name: `Commit: ${deployVersion}`,
             type: "PLAYING",
             url: "https://github.com/chrislennon/BigRoomBot"
