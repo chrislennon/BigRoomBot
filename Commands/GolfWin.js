@@ -23,7 +23,7 @@ class GolfWin extends Command {
       ReturnValues: "UPDATED_NEW"
     };
     
-    var numberWins = dynamoDB.updateItem(params, function(err, data) {
+    var numberWins = dynamoDB.update(params, function(err, data) {
       if (err) {
           console.log(err, err.stack);
       } else {
