@@ -5,7 +5,7 @@ class GolfWin extends Command {
   constructor() {
     super();
     this.name = `win`;
-    this.aliases = [`golfwin`, `winner`];
+    this.aliases = [`win`, `golfwin`, `winner`];
     this.description = `Increments number of wins on a user.`;
     this.usage = `win [@user]`;
   }
