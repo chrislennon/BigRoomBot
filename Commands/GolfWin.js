@@ -31,10 +31,9 @@ class GolfWin extends Command {
           console.log(err, err.stack);
       } else {
           console.log(data);
+          Message.reply(`${targetUser.toString()} has ${response.Attributes.golfWins} wins!`);
       }
     });
-
-    Message.reply(`${targetUser.toString()} has ${response.Attributes.golfWins} wins!`);
   }
 }
 
