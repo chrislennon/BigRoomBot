@@ -26,7 +26,7 @@ class GolfFourteen extends Command {
       ReturnValues: "UPDATED_NEW"
     };
     
-    var numberWins = dynamoDB.update(params, function(err, data) {
+    var response = dynamoDB.update(params, function(err, data) {
       if (err) {
           console.log(err, err.stack);
       } else {
@@ -34,7 +34,7 @@ class GolfFourteen extends Command {
       }
     });
 
-    Message.reply(`${targetUser.toString()} has ${numberWins} lucky 14s!`);
+    Message.reply(`${targetUser.toString()} has ${response.golfFourteens} lucky 14s!`);
   }
 }
 
