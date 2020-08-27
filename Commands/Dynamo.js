@@ -29,7 +29,7 @@ class Dynamo extends Command {
                console.log("Item :", ++count,JSON.stringify(itemdata));
             });
     
-            Message.reply(`There is ${count} records in the database`);
+            Message.reply(`${count} records in the database`);
         }
     }
   }
