@@ -34,7 +34,7 @@ class GolfUnFourteen extends Command {
       }
     });
 
-    Message.reply(`${targetUser.toString()} has ${response.golfFourteens} lucky 14s!`);
+    Message.reply(`${targetUser.toString()} has ${response.Attributes.golfFourteens} lucky 14s!`);
   }
 }
 

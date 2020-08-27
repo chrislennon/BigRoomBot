@@ -34,7 +34,7 @@ class GolfUnWin extends Command {
       }
     });
 
-    Message.reply(`${targetUser.toString()} has ${response.golfWins} wins!`);
+    Message.reply(`${targetUser.toString()} has ${response.Attributes.golfWins} wins!`);
   }
 }
 
