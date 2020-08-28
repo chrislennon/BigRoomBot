@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const Command = require(`./Command.js`);
+const Discord = require('discord.js');
 
 class Stats extends Command {
   constructor() {
