@@ -23,8 +23,6 @@ class Stats extends Command {
 
     const statsEmbed = new Discord.MessageEmbed()
       .setTitle('Golf Stats')
-      .attachFiles(['../images/golf.png'])
-      .setImage('attachment://golf.png')
       .setColor('#00ff00')
       .setDescription('Current Golf Stats')
       .setTimestamp()
@@ -38,7 +36,7 @@ class Stats extends Command {
             data.Items.forEach(function(itemdata) {
                console.log("Item :", ++count,JSON.stringify(itemdata));
                statsArray.push(
-                 {name: `<@${itemdata.id}>`, value: `Wins: ${itemdata.golfWins}, 14s: ${itemdata.golfFourteens}`}
+                 {name: `<@${itemdata.id}>`, value: `Wins: ${itemdata.golfWins || 0}, 14s: ${itemdata.golfFourteens || 0}`}
                )
             });
             statsEmbed.addField(statsArray);
