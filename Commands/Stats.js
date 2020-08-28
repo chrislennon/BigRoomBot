@@ -40,6 +40,7 @@ class Stats extends Command {
                  {name: `Player`, value: `<@${itemdata.id}>, Wins: ${itemdata.golfWins || 0}, 14s: ${itemdata.golfFourteens || 0}`}
                )
             });
+            statsArray.sort((a,b) => ((a.itemdata.golfWins || 0) - (b.itemdata.golfWins || 0)))
             console.log(`statsArray`, statsArray)
             statsEmbed.addFields(statsArray);
     
