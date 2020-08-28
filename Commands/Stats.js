@@ -37,7 +37,7 @@ class Stats extends Command {
                console.log("Item :", ++count,JSON.stringify(itemdata));
                console.log(itemdata);
                statsArray.push(
-                 {name: `<@${itemdata.id}>`, value: `Wins: ${itemdata.golfWins || 0}, 14s: ${itemdata.golfFourteens || 0}`}
+                 {name: `Player`, value: `<@${itemdata.id}>, Wins: ${itemdata.golfWins || 0}, 14s: ${itemdata.golfFourteens || 0}`}
                )
             });
             console.log(`statsArray`, statsArray)
