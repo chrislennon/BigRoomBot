@@ -35,11 +35,13 @@ class Stats extends Command {
             console.log("Scan succeeded.");
             data.Items.forEach(function(itemdata) {
                console.log("Item :", ++count,JSON.stringify(itemdata));
+               console.log(itemdata);
                statsArray.push(
                  {name: `<@${itemdata.id}>`, value: `Wins: ${itemdata.golfWins || 0}, 14s: ${itemdata.golfFourteens || 0}`}
                )
             });
-            statsEmbed.addField(statsArray);
+            console.log(`statsArray`, statsArray)
+            statsEmbed.addFields(statsArray);
     
             Message.channel.send(statsEmbed);
         }
