@@ -94,6 +94,7 @@ class Bot extends EventEmitter {
     if (!command) return;
     
     if (command.name == `help`) command.execute(Message, this, args);
+    if (command.dmOnly && Message.channel.type != 'dm') Message.reply(`You can only use this command if you slide into my DMs 🤫`);
     // Execute command
     else command.execute(Message, args);
   }
