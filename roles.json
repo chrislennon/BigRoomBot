@@ -1,0 +1,16 @@
+{
+  "reactions": {
+    "games" :{
+      "739588290134409317": "Fall Bro",
+      "759031242481467452": "Amongster"
+    },
+
+    "work" :{
+      "🟡": "I Smashed It",
+      "🔴": "I'm Smashing It",
+      "🔵": "Never Smashed It"
+    }
+  },
+
+  "ignored": [ "Bot Restricted", "Restricted" ]
+}

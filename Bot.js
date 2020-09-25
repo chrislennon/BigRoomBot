@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require(`fs`);
 const EventEmitter = require('events');
 const Discord = require('discord.js');
+const ReactionHandler = require(`./ReactionHandler`);
 
 class Bot extends EventEmitter {
   /**
@@ -14,6 +15,8 @@ class Bot extends EventEmitter {
 
     // Dynamically load commands from files
     this.commands = new Discord.Collection();
+    // Setup roles reaction handler
+    this.ReactionHandler = new ReactionHandler();
 
     fs.readdirSync(`./Commands`)
       .filter(file => file.endsWith(`.js`))
@@ -31,6 +34,8 @@ class Bot extends EventEmitter {
   bindEvents() {
     this.client.on('ready', this.onReady.bind(this));
     this.client.on('message', this.onMessage.bind(this));
+    this.client.on(`messageReactionAdd`, this.onMessageReactionAdd.bind(this));
+    this.client.on(`messageReactionRemove`, this.onMessageReactionRemove.bind(this));
   }
 
   /**
@@ -97,6 +102,24 @@ class Bot extends EventEmitter {
     if (command.dmOnly && Message.channel.type != 'dm') Message.reply(`You can only use this command if you slide into my DMs 🤫`);
     // Execute command
     else command.execute(Message, args);
+  }
+
+  /**
+   * Passes reaction add events to the ReactionHandler.
+   * @param {Reaction} Reaction The Discord reaction object.
+   * @param {User} User The Discord user that added the reaction.
+   */
+  onMessageReactionAdd(Reaction, User) {
+    this.ReactionHandler.handleReaction(Reaction, User, `ADD`);
+  }
+
+  /**
+   * Passes reaction remove events to the ReactionHandler.
+   * @param {Reaction} Reaction The Discord reaction object.
+   * @param {User} User The Discord user that removed the reaction.
+   */
+  onMessageReactionRemove(Reaction, User) {
+    this.ReactionHandler.handleReaction(Reaction, User, `REMOVE`);
   }
 }
 
