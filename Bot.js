@@ -60,6 +60,11 @@ class Bot extends EventEmitter {
     console.log(`Connected to Discord as ${this.client.user.username}#${this.client.user.discriminator} <@${this.client.user.id}>`);
     this.client.user.setStatus('available')
 
+    // Dirty hack for caching an old message and making it available to reaction listeners
+    // Longer term this method would likely be better and sustainable across test/dev servers
+    // https://github.com/AnIdiotsGuide/discordjs-bot-guide/blob/master/coding-guides/raw-events.md
+    this.client.channels.cache.get('759031393053048843').messages.fetch('759034204360802365', true)
+
     var deployVersion;
     try {
       deployVersion = fs.readFileSync('.version');
