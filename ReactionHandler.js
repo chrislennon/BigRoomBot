@@ -33,7 +33,7 @@ class ReactionHandler {
   handleReaction(Reaction, User, ...args) {
     if (Reaction.me) return;
 
-    if (Reaction.message.channel.name === `roles`) {
+    if (Reaction.message.channel.name === `roles` || Reaction.message.channel.name === `dnd-welcome`) {
       this.handleRoleReaction(Reaction, User, args[0]);
       return;
     }
